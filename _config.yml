@@ -1,35 +1,42 @@
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://martinuslee.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+name: Your New Jekyll Site
+description: Blogging about stuffs
+meta_description: "Your New Jekyll Site, Blogging about stuffs"
 
+aboutPage: true
 
-# Build settings
 markdown: kramdown
-permalink: pretty
-plugins:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll/tagging
+highlighter: rouge
 
-paginate: 5
-paginate_path: "/page/:num"
+plugins: [jekyll-paginate]
+paginate: 20
+domain_name: 'http://yourblog-domain.com'
+google_analytics: 'UA-XXXXXXXX-X'
+disqus: false
+disqus_shortname: 'your-disqus-shortname'
 
+# Details for the RSS feed generator
+url:            'http://your-blog-url.example.com'
+author:         'Your Name'
+authorTwitter:  'YourTwitterUsername'
 
-# Pages Path
+permalink:       /:year/:title/
+
 defaults:
-  - scope:
-      path: '_pages'
-    values:
-      permalink: /:basename:output_ext
-
-include:
-  - _pages
-
-
-# Tags
-tag_page_dir:         tag
-tag_page_layout:      tag_page
-tag_permalink_style:  pretty
-
-sass:
-  sass_dir: _sass
-  style: compressed
+    -
+        scope:
+            path: "" # empty string for all files
+            type: pages
+        values:
+            layout: default
+    -
+        scope:
+            path: "" # empty string for all files
+            type: posts
+        values:
+            layout: post
+    -
+        scope:
+            path: ""
+            type: drafts
+        values:
+            layout: post
