@@ -16,7 +16,7 @@ disqus_shortname: 'your-disqus-shortname'
 
 # Details for the RSS feed generator
 url:            'http://martinuslee.github.io'
-author:         'Martinus Lee'
+author:         'Jongheon Lee'
 authorTwitter:  'YourTwitterUsername'
 
 permalink:       /:year/:title/
