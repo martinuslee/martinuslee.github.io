@@ -31,7 +31,7 @@ description: 헷갈리는 통계 용어
 
    - 스튜던트 t 분포는 다음 확률변수의 분포로 정의된다. 
    
-   <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a151edbf636a4b8dfa7f166541a55f3d31edb7bf" width="5%" height="5%" title="px(픽셀) 크기 설정" alt="t"></img>
+   <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a151edbf636a4b8dfa7f166541a55f3d31edb7bf" width="5%" height="5%" alt="t" />
    
    Z는 표준정규분포 . V는 자유도 v인 카이제곱 분포.
    
