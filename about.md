@@ -4,6 +4,8 @@ permalink: about/
 profile: true
 ---
 
-This is a static page. It could be an 'about page' if you'd like.
+Studying Computer Science at Korea University at Sejong Campus
+github : https://github.com/martinuslee
+instagram : https://instagram.com/bornin4march
 
 {% include footer.html %}
