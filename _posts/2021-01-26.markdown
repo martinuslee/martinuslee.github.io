@@ -1,7 +1,7 @@
 ---
-title:  "ANNs 알고리즘"
-date:   2032-01-21 10:18:00
-description: Thriller Comedy Horror
+title:  "ANNs 동작 및 학습 방법"
+date:   2021-01-21 10:18:00
+description: Artificial Neural Network의 동작 및 학습 원리 이해
 ---
 
 You'll find this post in your `_posts` directory - edit this post and re-build (or run with the `-w` switch) to see your changes!
