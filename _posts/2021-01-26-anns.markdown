@@ -61,7 +61,7 @@ git
 + Error Back-Propagation
 
 
-   ![backpropagation](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DAn5z8lR8asY&psig=AOvVaw0vZ--2J4mdYW2Zx1z7MM90&ust=1611750958013000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMD4qq3Oue4CFQAAAAAdAAAAABAD)
+   ![backpropagation](https://i.stack.imgur.com/7Ui1C.png)
 
       Only with errors and corresponding weight values, we can compute the error value of the previous layer
       
