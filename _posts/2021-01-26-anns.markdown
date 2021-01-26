@@ -33,6 +33,21 @@ description: Artificial Neural Network의 동작 및 학습 원리 이해
 + 이런 연결된 네트워크를 Feed-forward Network라고 한다
   - 아키텍처는 Input, Hidden, Output으로 구분가능하다.
 
+다른 Supervised Learning과 동일하게 x,y 값이 주어질 것이고 각각 Input과 Output 레이어에 할당이 된다. 
+그 사이 관계가 정의 되어야하는데 사람은 볼 수 없지만 뉴럴 네트워크안에 히든 레이어로 관계가 묘사된다.
+트레이닝 과정으로 그 관계를 학습하게 된다.
+결론 ) input레이어에서 input 시그널로 어느정도의 weight를 가져야하는지, 히든 레이어에서 어느정도 weight를 가져야 최종적으로 input에 대한 올바른 output이 나오는지 학습하는 것이 최종 목표이다.
+
+
++ Error Propagation: Chain Rule
+
+    weight는 임의로 초기화 된 값들.
+
+    가중치로 포워딩된 Input은 주어진 학습 데이터 셋의 output으로 이어질 수 없다. 히든레이어에서 에러를 발생 시킨다. 
+
+    최종적으로 아웃풋레이어에서 귀결이 되는데 
+
+
   
 
     
