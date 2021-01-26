@@ -45,7 +45,20 @@ description: Artificial Neural Network의 동작 및 학습 원리 이해
 
     가중치로 포워딩된 Input은 주어진 학습 데이터 셋의 output으로 이어질 수 없다. 히든레이어에서 에러를 발생 시킨다. 
 
-    최종적으로 아웃풋레이어에서 귀결이 되는데 
+    포워딩 방향으로 에러가 propagation된다.
+
+    + chain rule? 
+
+      예를 들어 2번째 레이어는 3번째 레이어의 Perceptron을 통해서만 최종적인 에러에 영향을 미치게 된다. 
+
+      즉, 최종 에러의 첫번째 델타1은 두 번째 레이어의 델타1,2,3 두번째 레이어의 델타1은 세번째 레이어의 델타 1,2,3에 영향을 미치게 된다.
+
++ Error Quantification: Error Function
+
+    대부분 머신러닝 기법에서 Error를 최적하는 기법이 중요하고 이를 위해서 Error를 정량화하는것이 매우 중요하다.
+
+    Error는 최종적으로 Output에서 델타1,2,3으로 나타나고 합쳐져서 Total Error가 나타나는데 이런 Error를 수치화하기 위해서 
+
 
 
   
