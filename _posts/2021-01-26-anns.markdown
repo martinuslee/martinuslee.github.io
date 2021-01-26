@@ -22,9 +22,17 @@ description: Artificial Neural Network의 동작 및 학습 원리 이해
     들어온 input이 합쳐져서 weighted sum으로 합쳐져서 새로운 function에 input으로 들어가게된다.
 
     Activate 할 것인지 결정하는 activatoin function이 존재한다.
-    초기 Perceptron을 연결해서 인공 신경망을 만든다.
-    => 
+    이런 Perceptron들을 연결해서 인공 신경망을 만든다.
+    
 
-    - 문제점 
+    - 문제점 : Activation function은 미분가능하지 않다. 즉, 트레이닝이 불가능하다..!
+
+    - 해결 : 미분가능한 Sigmoid function으로 대체. 학습 가능한 모델이 된다.
+
+
++ 이런 연결된 네트워크를 Feed-forward Network라고 한다
+  - 아키텍처는 Input, Hidden, Output으로 구분가능하다.
+
+  
 
     
