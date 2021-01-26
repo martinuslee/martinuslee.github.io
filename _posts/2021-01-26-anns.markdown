@@ -4,20 +4,27 @@ date:   2021-01-21 10:18:00
 description: Artificial Neural Network의 동작 및 학습 원리 이해
 ---
 
-You'll find this post in your `_posts` directory - edit this post and re-build (or run with the `-w` switch) to see your changes!
-To add new posts, simply add a file in the `_posts` directory that follows the convention: YYYY-MM-DD-name-of-post.ext.
+  "사람처럼 행동한다"
++ Neuron of Biological Neural Network
 
-Jekyll also offers powerful support for code snippets:
+    Axon에서 자극을 통해 시냅스를 Endrite로 전달 다음 뉴런으로 전달
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
++ 뉴런의 활성화를 통한 문자 인식 모델
 
-Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
+    Winner-talk-all Activation Rule
+    신호에 의해 정보를 판한해야하는데 여기서 ㄱ,ㄴ,ㄷ,ㄹ 등 정보를 선택
+    인지된 정보를 다음 coincidence 뉴런으로 전달
 
-[jekyll-gh]: https://github.com/mojombo/jekyll
-[jekyll]:    http://jekyllrb.com
++ Perceptron of Artificial Neural Network 
+
+    input 다양한 정보마다 중요도가 다르다. (가중치 Weights) 
+
+    들어온 input이 합쳐져서 weighted sum으로 합쳐져서 새로운 function에 input으로 들어가게된다.
+
+    Activate 할 것인지 결정하는 activatoin function이 존재한다.
+    초기 Perceptron을 연결해서 인공 신경망을 만든다.
+    => 
+
+    - 문제점 
+
+    
