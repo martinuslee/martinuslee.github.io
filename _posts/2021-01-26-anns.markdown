@@ -4,7 +4,7 @@ date:   2021-01-21 10:18:00
 description: Artificial Neural Network의 동작 및 학습 원리 이해
 ---
 
-  ### "사람처럼 행동한다"
+### "사람처럼 행동한다"
 + Neuron of Biological Neural Network
 
     Axon에서 자극을 통해 시냅스를 Endrite로 전달 다음 뉴런으로 전달
@@ -44,7 +44,7 @@ description: Artificial Neural Network의 동작 및 학습 원리 이해
     weight는 임의로 초기화 된 값들.
 
     가중치로 포워딩된 Input은 주어진 학습 데이터 셋의 output으로 이어질 수 없다. 히든레이어에서 에러를 발생 시킨다. 
-
+git
     포워딩 방향으로 에러가 propagation된다.
 
     + chain rule? 
@@ -57,9 +57,14 @@ description: Artificial Neural Network의 동작 및 학습 원리 이해
 
     대부분 머신러닝 기법에서 Error를 최적하는 기법이 중요하고 이를 위해서 Error를 정량화하는것이 매우 중요하다.
 
-    Error는 최종적으로 Output에서 델타1,2,3으로 나타나고 합쳐져서 Total Error가 나타나는데 이런 Error를 수치화하기 위해서 
-    ㄹㅇ
++ Error Back-Propagation
 
+      Only with errors and corresponding weight values, we can compute the error value of the previous layer
+      
+      값을 모른 채로 Feed Foward Network를 통해 Error값을 propagation 시켜 왔는데 그것을 계산 할 수 있게 된다.
+      편미분을 통한 Weigth value optimization
+    
+    
 
 
   
