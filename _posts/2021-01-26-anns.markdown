@@ -4,7 +4,7 @@ date:   2021-01-21 10:18:00
 description: Artificial Neural Network의 동작 및 학습 원리 이해
 ---
 
-  "사람처럼 행동한다"
+  ### "사람처럼 행동한다"
 + Neuron of Biological Neural Network
 
     Axon에서 자극을 통해 시냅스를 Endrite로 전달 다음 뉴런으로 전달
