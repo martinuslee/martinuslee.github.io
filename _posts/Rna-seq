@@ -1,0 +1,36 @@
+---
+title:  "RNA-seq"
+date:   2021-01-27 10:18:00
+description: RNA-seq이 중요한 이유와 과정
+---
+
+# 생물정보학에서 사용하는 유전자 발현을 탐색하는 기법. 
+
++ RNA-seq은 Transcriptome을 분석함에 있어서 필수적이다.
+
+Transcriptome은 단백질체 연구와 함께 유전자의 기능, 발현조절의 기각, alternative splicing, 특정 시료 간의 비교를 통한 유전자 발현의 정량적 변화를 측정하여 질병 기전 들을 이해하는데 크게 기여한다. 
+
+![summary](https://dbscthumb-phinf.pstatic.net/5282_000_1/20181218180854876_98SPK75D2.png/journal.pcbi.100.png?type=w646_fst_n;;92;true)
+
+RNA-seq은 mRNA를 cDNA로 만든 후 NGS를 이용하여 시료에 존재하는 모든 염기 서열을 분석하는 방법으로 직접적으로 발현된 RNA의 서열 정보를 제공하므로 알려지지 않은 유전자들이나 새로운 전사산물 이종 분석에 있어서 필수적이다.
+
+분석과정은 위 그림과 같다.
+
+RNA로부터 cDNA를 합성하는 과정을 제외하면 원리적으로 DNA 염기서열 분석(DNA-seq)과 같다. 
+
+      1. Sample에서 mRNA를 추출한다. RNA를 조각 내어 cDNA를 합성하거나 혹은 cDNA로 합성한 다음 조각 내어 양 말단에 서열 분석에 필요한 어뎁터를 붙여 라이브러리를 만든다.
+
+      2. 고속 대량 서열분석을 수행하여, 많은 조각 서열(read)을 얻고, 정렬(Alignment) 과정을 거쳐 contig 서열 정보를 얻는다.
+
+      3. 이 Contig 서열을 Reference 유전체 서열과 비교하여 mapping하게 된다. 이후 각종 Bioinformatics 도구들을 사용하여 alternative splicing, transriptional start site, 유전자 발현양의 정량적 비교 등을 수행한다. 
+
+
++ 실습을 위해 Python으로 Linux 서버에 위치한 각 단계에 사용될 툴을 활용하여 파이프 라인을 작성했다.
+
+         https://github.com/martinuslee/goosebumps
+
+분석을 할 fastq 파일을 먼저 준비한 뒤 
+
+trimmomatic으로 조각 서열을 얻고 STAR을 활용하여 Alignment를 하였다. 최종적으로 얻은 BAM파일을 FeatureCounts로 발현량을 구했다.
+
+
