@@ -1,5 +1,5 @@
 title: Martinus Devlog
-description: always be hustle
+description: always be hustle life
 author: Jongheon Lee
 avatar: /logo.png
 email: supreme034@korea.ac.kr
@@ -11,6 +11,8 @@ plugins:
   - jekyll-paginate
 
 paginate: 10
+
+skin: solarized
 
 # Uncomment the below line and set the tracking ID for enabling Google Analytics
 # 
