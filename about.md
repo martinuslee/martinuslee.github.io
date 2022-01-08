@@ -1,12 +1,7 @@
 ---
+layout: page
 title: About
-permalink: about/
-profile: true
+permalink: /about/
 ---
 
-Studying Computer Science at Korea University at Sejong Campus
-
-
-{% include profileLink.html %}
-
-{% include footer.html %}
+Another minimal style of Jekyll theme for writers.
