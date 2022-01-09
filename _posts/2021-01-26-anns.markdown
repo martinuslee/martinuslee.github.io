@@ -2,6 +2,8 @@
 title:  "ANNs 동작 및 학습 방법"
 date:   2021-01-21 10:18:00
 description: Artificial Neural Network의 동작 및 학습 원리 이해
+categories: ML/DL
+tags: [AI, Deep Learning]
 ---
 
 ## "사람처럼 행동한다"

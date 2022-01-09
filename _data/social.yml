@@ -4,3 +4,6 @@
 - title: Instagram
   url: https://instagram.com/bornin4march
   icon: fab fa-instagram
+- title: Email
+  url: mailto:supreme034@korea.ac.kr
+  icon: "fas fa-fw fa-envelope-square"
