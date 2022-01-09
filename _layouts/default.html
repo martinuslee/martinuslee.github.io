@@ -14,6 +14,7 @@
       <div class="site-body wrapper">
         <aside class="site-sidebar" id="site-sidebar">
           {% if page.toc %}
+            {% include sidebar.html %}
             {% include sidebar-toc.html %}
           {% else %}
             {% include sidebar.html %}
