@@ -1,3 +1,26 @@
+<div class="sidebar-section">
+  <ul class="contact-list">
+    {% if site.author -%}
+      <li>
+        <i class="sidebar-icon fas fa-at"></i>
+        <span class="contact-info p-name">{{ site.author | escape }}</span>
+      </li>
+    {%- endif %}
+    {% if site.email -%}
+      <li>
+        <i class="sidebar-icon fas fa-envelope"></i>
+        <a class="contact-info u-email" href="mailto:{{ site.email }}">{{ site.email }}</a>
+      </li>
+    {%- endif %}
+    {% if site.location -%}
+      <li>
+        <i class="sidebar-icon fas fa-location-arrow"></i>
+        <a class="contact-info u-location" href="https://www.google.com/maps/search/{{ site.location }}">{{ site.location }}</a>
+      </li>
+    {%- endif %}
+  </ul>
+</div>
+
 <h3 class="toc-title">Table of Contents</h3>
 <nav class="toc-nav">
   {% include toc.html html=content h_min=2 h_max=3 class="toc" %}

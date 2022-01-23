@@ -1,0 +1,85 @@
+<h2 id="사람처럼-행동한다">“사람처럼 행동한다”</h2>
+
+<ul>
+  <li>
+    <p>Neuron of Biological Neural Network</p>
+
+    <p>Axon에서 자극을 통해 시냅스를 Endrite로 전달 다음 뉴런으로 전달</p>
+  </li>
+  <li>
+    <p>뉴런의 활성화를 통한 문자 인식 모델</p>
+
+    <p>Winner-talk-all Activation Rule
+  신호에 의해 정보를 판한해야하는데 여기서 ㄱ,ㄴ,ㄷ,ㄹ 등 정보를 선택
+  인지된 정보를 다음 coincidence 뉴런으로 전달</p>
+  </li>
+  <li>
+    <p>Perceptron of Artificial Neural Network</p>
+
+    <p>input 다양한 정보마다 중요도가 다르다. (가중치 Weights)</p>
+
+    <p>들어온 input이 합쳐져서 weighted sum으로 합쳐져서 새로운 function에 input으로 들어가게된다.</p>
+
+    <p>Activate 할 것인지 결정하는 activatoin function이 존재한다.
+  이런 Perceptron들을 연결해서 인공 신경망을 만든다.</p>
+
+    <ul>
+      <li>
+        <p>문제점 : Activation function은 미분가능하지 않다. 즉, 트레이닝이 불가능하다..!</p>
+      </li>
+      <li>
+        <p>해결 : 미분가능한 Sigmoid function으로 대체. 학습 가능한 모델이 된다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>이런 연결된 네트워크를 Feed-forward Network라고 한다</p>
+    <ul>
+      <li>아키텍처는 Input, Hidden, Output으로 구분가능하다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>다른 Supervised Learning과 동일하게 x,y 값이 주어질 것이고 각각 Input과 Output 레이어에 할당이 된다. 
+그 사이 관계가 정의 되어야하는데 사람은 볼 수 없지만 뉴럴 네트워크안에 히든 레이어로 관계가 묘사된다.
+트레이닝 과정으로 그 관계를 학습하게 된다.
+결론 ) input레이어에서 input 시그널로 어느정도의 weight를 가져야하는지, 히든 레이어에서 어느정도 weight를 가져야 최종적으로 input에 대한 올바른 output이 나오는지 학습하는 것이 최종 목표이다.</p>
+
+<ul>
+  <li>
+    <p>Error Propagation: Chain Rule</p>
+
+    <p>weight는 임의로 초기화 된 값들.</p>
+
+    <p>가중치로 포워딩된 Input은 주어진 학습 데이터 셋의 output으로 이어질 수 없다. 히든레이어에서 에러를 발생 시킨다. 
+git
+  포워딩 방향으로 에러가 propagation된다.</p>
+
+    <ul>
+      <li>
+        <p>chain rule?</p>
+
+        <p>예를 들어 2번째 레이어는 3번째 레이어의 Perceptron을 통해서만 최종적인 에러에 영향을 미치게 된다.</p>
+
+        <p>즉, 최종 에러의 첫번째 델타1은 두 번째 레이어의 델타1,2,3 두번째 레이어의 델타1은 세번째 레이어의 델타 1,2,3에 영향을 미치게 된다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Error Quantification: Error Function</p>
+
+    <p>대부분 머신러닝 기법에서 Error를 최적하는 기법이 중요하고 이를 위해서 Error를 정량화하는것이 매우 중요하다.</p>
+  </li>
+  <li>
+    <p>Error Back-Propagation</p>
+
+    <p><img src="https://i.stack.imgur.com/7Ui1C.png" alt="backpropagation" /></p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Only with errors and corresponding weight values, we can compute the error value of the previous layer
+  
+값을 모른 채로 Feed Foward Network를 통해 Error값을 propagation 시켜 왔는데 그것을 계산 할 수 있게 된다.
+편미분을 통한 Weigth value optimization
+</code></pre></div>    </div>
+  </li>
+</ul>
+

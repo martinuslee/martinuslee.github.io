@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Docker 이미지와 컨테이너 커맨드 | Martinus Devlog</title>
+<meta name="generator" content="Jekyll v3.9.1" />
+<meta property="og:title" content="Docker 이미지와 컨테이너 커맨드" />
+<meta name="author" content="Jongheon Lee" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Docker images, Docker container" />
+<meta property="og:description" content="Docker images, Docker container" />
+<link rel="canonical" href="http://localhost:4000/docker/2022/01/09/Docker-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-%EC%83%9D%EC%84%B1.html" />
+<meta property="og:url" content="http://localhost:4000/docker/2022/01/09/Docker-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-%EC%83%9D%EC%84%B1.html" />
+<meta property="og:site_name" content="Martinus Devlog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-01-09T23:18:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Docker 이미지와 컨테이너 커맨드" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/logo.png"},"name":"Jongheon Lee"},"headline":"Docker 이미지와 컨테이너 커맨드","dateModified":"2022-01-09T23:18:00+09:00","datePublished":"2022-01-09T23:18:00+09:00","url":"http://localhost:4000/docker/2022/01/09/Docker-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-%EC%83%9D%EC%84%B1.html","author":{"@type":"Person","name":"Jongheon Lee"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/docker/2022/01/09/Docker-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-%EC%83%9D%EC%84%B1.html"},"@type":"BlogPosting","description":"Docker images, Docker container","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Martinus Devlog" />
+
+
+
+
+
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans|Roboto|Roboto%20Slab|Inconsolata|Dancing%20Script|Noto%20Sans%20SC|Noto%20Sans%20TC|Noto%20Serif%20SC|Noto%20Serif%20TC|Ma%20Shan%20Zheng">
+
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/skin.css">
+
+<!-- Begin selecting skin -->
+
+<!-- End selecting skin -->
+
+<script async src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+  </head>
+
+  <body>
+    <div class="site-container">
+      <header class="site-header">
+        <div class="wrapper">
+  <script>
+    function clickSidebarButton() {
+      const elem = document.getElementById("site-sidebar")
+      if (elem.style.display == "none" || elem.style.display == "") {
+        elem.style.display = "block";
+      } else {
+        elem.style.display = "none";
+      }
+    }
+  </script>
+  <a class="site-sidebar-button" onclick="clickSidebarButton()"><i class="far fa-user"></i>
+  </a>
+
+  <a class="site-title" rel="author" href="/">Martinus Devlog</a>
+
+  
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger" title="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <ul class="trigger">
+              <li><a class="" href="/about/">About</a></li>
+            
+              <li><a class="" href="/years/">Years</a></li>
+            
+              <li><a class="" href="/categories/">Categories</a></li>
+            
+              <li><a class="" href="/tags/">Tags</a></li>
+            </ul>
+    </nav>
+  
+</div>
+
+      </header>
+      
+      <div class="site-body wrapper">
+        <aside class="site-sidebar" id="site-sidebar">
+          
+            <div class="sidebar-section">
+  <ul class="contact-list">
+    <li>
+        <i class="sidebar-icon fas fa-at"></i>
+        <span class="contact-info p-name">Jongheon Lee</span>
+      </li>
+    
+    <li>
+        <i class="sidebar-icon fas fa-location-arrow"></i>
+        <a class="contact-info u-location" href="https://www.google.com/maps/search/Seoul ,Republic of Korea">Seoul ,Republic of Korea</a>
+      </li>
+  </ul>
+</div>
+
+<h3 class="toc-title">Table of Contents</h3>
+<nav class="toc-nav">
+  <ul class="toc">
+  <li><a href="#도커-이미지">도커 이미지?</a></li>
+  <li><a href="#도커-컨테이너">도커 컨테이너?</a></li>
+  <li><a href="#컨테이너-생성하기">컨테이너 생성하기</a></li>
+</ul>
+
+</nav>
+
+          
+        </aside>
+        <main class="site-main" id="site-main" aria-label="Content" tabindex="1">
+          <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+
+    <h1 class="post-title p-name" itemprop="name headline">Docker 이미지와 컨테이너 커맨드</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2022-01-09T23:18:00+09:00" itemprop="datePublished">
+        Jan 9, 2022
+      </time></p>
+
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="도커-이미지와-컨테이너">도커 이미지와 컨테이너</h1>
+
+<p>도커 엔진에서 사용하는 기본 단위는 이미지와 컨테이너이다.</p>
+
+<h2 id="도커-이미지">도커 이미지?</h2>
+
+<p>이미지는 컨테이너를 생성할 때 필요한 요소이며, 가상 머신을 생성할 때 사용하는 iso 파일과 비슷한 개념.</p>
+
+<p>이미지는 여러 개의 계층으로 된 <strong>바이너리 파일</strong>로 존재하고, 컨테이너를 생성하고 실행할 때 <strong>읽기 전용</strong>으로 사용된다.</p>
+
+<p>이미지는 도커 명령어로 받을 수 있다.</p>
+
+<p>도커에서 사용하는 이미지의 이름은 기본적으로 [저장소 이름] / [이미지 이름] : [태그] 형태로 구성된다.</p>
+
+<h2 id="도커-컨테이너">도커 컨테이너?</h2>
+
+<p>리눅스 OS부터 아파치 웹서버, MySQL DB, 하둡, 스파크, 스톰 등 다양한 이미지로 컨테이너를 생성하면 해당 이미지의 목적에 맞는 파일이 들어 있는 파일시스템과 격리된 시스템 자원 및 네트워크를 사용할 수 있는 독립된 공간이 생성된다. 이 독립된 공간이 바로 컨테이너!</p>
+
+<p>일반적으로 도커 컨테이너는 생성될 때 사용된 고커 이미지의 종류에 따른 설정과 파일을 가지므로 도커 이미지에 맞는 목적에 따라 사용한다.</p>
+
+<aside>
+💡 예를 들어 웹 서버 도커 이미지로부터 여러 개의 컨테이너를 생성하면? ⇒ 생성된 컨테이너의 개수만틈 웹 서버가 생성되고, 이 컨테이너들은 외부에 웹 서비스를 제공하는데 사용된다.
+
+</aside>
+
+<p>컨테이너는 이미지를 <strong>읽기 전용</strong>으로 사용하되 이미지에서 <strong>변경된 사항만</strong> 컨테이너 계층에 저장하므로 컨테이너에서 무엇을 하든지 <strong>원래 이미지는 영향을 받지 않는다!</strong> 또한 생성된 각 컨테이너는 각기 독립된 파일시스템을 제공받으며 호스트와 분리돼 있어서 특정 컨테이너에서 어떤 어플리케이션을 설치하거나 삭제한다해도 다른 컨테이너나 호스트에 영향을 주지 않는다.</p>
+
+<h2 id="컨테이너-생성하기">컨테이너 생성하기</h2>
+
+<ul>
+  <li>우선 도커 엔진의 버전을 확인</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker <span class="nt">-v</span>
+Docker version 20.10.11, build dea9396 
+</code></pre></div></div>
+
+<ul>
+  <li>첫 번째 컨테이너 생성</li>
+</ul>
+
+<p>docker run 커맨드는 컨테이너를 생성하고 실행하는 역할을 한다. ubuntu:14.04는 컨테이너를 생성하기 위한 이미지의 이름이다.</p>
+
+<p>-i -t 옵션은 컨테이너와 상호 입출력을 가능하게 한다. ( -i 상호입출력, -t tty를 활성화해서 bash 셸 사용 )</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run <span class="nt">-i</span> <span class="nt">-t</span> ubuntu:14.04
+
+Unable to find image <span class="s1">'ubuntu:14.04'</span> locally 
+// 이미지가 로컬 도커 엔진에 존재하지 않으면 도커 중앙 이미지 저장소인 도커 허브에서 자동으로 내려받음
+...... 생략 ........
+root@728039103a32:/#
+</code></pre></div></div>
+
+<ul>
+  <li>컨테이너에서 기본 사용자는 root이고 호스트 이름은 무작위 16진수 해시값이다. 무작위 16진수 해시값은 컨테이너의 고유한 ID의 앞 일부분이다.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@728039103a32:/# <span class="nb">ls
+</span>bin  boot  dev  etc  home  lib  lib64  media  mnt  
+opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+
+// 아직 아무것도 설치되지 않은 상태.. <span class="o">(</span>파일 시스템이 독립적이므로<span class="o">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>컨테이너를 빠져나오려면 exit를 입력하면된다.  또는 Ctrl + D를 입력한다.</li>
+</ul>
+
+<p>⇒ 빠져나오면서 동시에 컨테이너를 정지시킨다.</p>
+
+<p>⇒ Ctrl +P, Q를 입력하면 컨테이너만 빠져나옴 ( 배시 쉘 종료 X )</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@728039103a32:/# <span class="nb">exit
+exit</span>
+</code></pre></div></div>
+
+<ul>
+  <li>호스트에서 컨테이너 생성시 도커 공식 저장소에서 이미지를 내려받기</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker pull centos:7
+7: Pulling from library/centos
+2d473b07cdd5: Pull <span class="nb">complete 
+</span>Digest: sha256:9d4bcbbb213dfd745b58be38b13b996ebb5ac315fe75711bd618426a630e0987
+Status: Downloaded newer image <span class="k">for </span>centos:7
+docker.io/library/centos:7
+</code></pre></div></div>
+
+<ul>
+  <li>이미지를 정상적으로 받았는지 확인하기 도커 엔진에 존재하는 이미지의 목록을 출력</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker images
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+centos       7         eeb6ee3f44bd   4 months ago   204MB
+ubuntu       14.04     13b66b487594   9 months ago   197MB
+</code></pre></div></div>
+
+  </div>
+
+  <footer class="post-footer">
+    
+      <div class="post-meta">
+        <i class="fas fa-folder"></i>
+        <ul class="post-taxonomies post-categories">
+          
+          
+            <li class="post-category">
+              
+              <a href="/categories/#docker">Docker</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    
+      <div class="post-meta">
+        <i class="fas fa-tags"></i>
+        <ul class="post-taxonomies post-tags">
+          
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#docker">docker</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#os">os</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    <nav class="post-pagination" role="navigation">
+      
+        <a class="post-previous" href="/docker/2022/01/09/Docker.html">
+          <h4 class="post-pagination-label">Prev</h4>
+          <span class="post-pagination-title">
+            <i class="fas fa-arrow-left"></i> Docker 시작하기
+
+          </span>
+        </a>
+      
+
+      
+    </nav>
+  </footer>
+
+  
+  
+</article>
+
+          <footer class="site-footer">
+            <div class="footer-col-wrapper">
+
+  <div class="footer-col">
+    <div class="copyright">
+      
+      
+      
+      
+      <p>Copyright © 2021&nbsp;-&nbsp;2022 Jongheon Lee; All rights reserved.</p>
+      
+    </div>
+  </div>
+
+  <!-- <div class="footer-col">
+    <p>always be hustle</p>
+  </div> -->
+</div>
+
+          </footer>
+        </main>
+      </div>
+    </div>
+  </body>
+
+</html>

@@ -1,6 +1,7 @@
 ---
 layout: post
 toc: true
+toc_sticky: true
 title:  "리눅스 데몬(Daemon)이란?"
 date:   2022-01-23 16:18:00
 description: Linux, Unix, Daemon, OS

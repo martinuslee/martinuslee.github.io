@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Docker 시작하기 | Martinus Devlog</title>
+<meta name="generator" content="Jekyll v3.9.1" />
+<meta property="og:title" content="Docker 시작하기" />
+<meta name="author" content="Jongheon Lee" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Docker 소개, 가상머신과 컨테이너, Docker의 장점" />
+<meta property="og:description" content="Docker 소개, 가상머신과 컨테이너, Docker의 장점" />
+<link rel="canonical" href="http://localhost:4000/docker/2022/01/09/Docker.html" />
+<meta property="og:url" content="http://localhost:4000/docker/2022/01/09/Docker.html" />
+<meta property="og:site_name" content="Martinus Devlog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-01-09T23:18:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Docker 시작하기" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/logo.png"},"name":"Jongheon Lee"},"headline":"Docker 시작하기","dateModified":"2022-01-09T23:18:00+09:00","datePublished":"2022-01-09T23:18:00+09:00","url":"http://localhost:4000/docker/2022/01/09/Docker.html","author":{"@type":"Person","name":"Jongheon Lee"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/docker/2022/01/09/Docker.html"},"@type":"BlogPosting","description":"Docker 소개, 가상머신과 컨테이너, Docker의 장점","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Martinus Devlog" />
+
+
+
+
+
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans|Roboto|Roboto%20Slab|Inconsolata|Dancing%20Script|Noto%20Sans%20SC|Noto%20Sans%20TC|Noto%20Serif%20SC|Noto%20Serif%20TC|Ma%20Shan%20Zheng">
+
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/skin.css">
+
+<!-- Begin selecting skin -->
+
+<!-- End selecting skin -->
+
+<script async src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+  </head>
+
+  <body>
+    <div class="site-container">
+      <header class="site-header">
+        <div class="wrapper">
+  <script>
+    function clickSidebarButton() {
+      const elem = document.getElementById("site-sidebar")
+      if (elem.style.display == "none" || elem.style.display == "") {
+        elem.style.display = "block";
+      } else {
+        elem.style.display = "none";
+      }
+    }
+  </script>
+  <a class="site-sidebar-button" onclick="clickSidebarButton()"><i class="far fa-user"></i>
+  </a>
+
+  <a class="site-title" rel="author" href="/">Martinus Devlog</a>
+
+  
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger" title="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <ul class="trigger">
+              <li><a class="" href="/about/">About</a></li>
+            
+              <li><a class="" href="/years/">Years</a></li>
+            
+              <li><a class="" href="/categories/">Categories</a></li>
+            
+              <li><a class="" href="/tags/">Tags</a></li>
+            </ul>
+    </nav>
+  
+</div>
+
+      </header>
+      
+      <div class="site-body wrapper">
+        <aside class="site-sidebar" id="site-sidebar">
+          
+            <div class="sidebar-section">
+  <ul class="contact-list">
+    <li>
+        <i class="sidebar-icon fas fa-at"></i>
+        <span class="contact-info p-name">Jongheon Lee</span>
+      </li>
+    
+    <li>
+        <i class="sidebar-icon fas fa-location-arrow"></i>
+        <a class="contact-info u-location" href="https://www.google.com/maps/search/Seoul ,Republic of Korea">Seoul ,Republic of Korea</a>
+      </li>
+  </ul>
+</div>
+
+<h3 class="toc-title">Table of Contents</h3>
+<nav class="toc-nav">
+  <ul class="toc">
+  <li><a href="#docker-engine">Docker Engine?</a></li>
+  <li><a href="#가상-머신과-도커-컨테이너">가상 머신과 도커 컨테이너</a></li>
+  <li><a href="#docker를-사용해야하는-이유">Docker를 사용해야하는 이유?</a>
+    <ul>
+      <li><a href="#1-어플리케이션의-개발과-배포가-편리해짐">1. 어플리케이션의 개발과 배포가 편리해짐</a></li>
+      <li><a href="#2-독립성과-확장성">2. 독립성과 확장성</a></li>
+    </ul>
+  </li>
+</ul>
+
+</nav>
+
+          
+        </aside>
+        <main class="site-main" id="site-main" aria-label="Content" tabindex="1">
+          <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+
+    <h1 class="post-title p-name" itemprop="name headline">Docker 시작하기</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2022-01-09T23:18:00+09:00" itemprop="datePublished">
+        Jan 9, 2022
+      </time></p>
+
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="docker">Docker?</h1>
+
+<p>리눅스 컨테이너에 여러 기능을 추가함으로써 어플리케이션을 컨테이너로서 좀 더 쉽게 사용할 수 있게 만들어진 오픈소스 프로젝트.</p>
+
+<p>Go 언어로 작성돼 있으며, 기존에 쓰이던 가상화 방법인 가상 머신과 달리 도커 컨테이너는 성능의 손실이 거의 없어서 차세대 클라우드 인프라 솔루션으로서 많은 개발자들에게 주목 받고 있다.</p>
+
+<p>도커와 관련된 프로젝트는 Docker compose, Private Registry, Docker Hub, Docker for Desktop 등 여러 가지가 있지만 일반적으로 도커라고 하면 코거 엔진 혹은 도커에 관련된 모든 프로젝트를 의미한다.</p>
+
+<h2 id="docker-engine">Docker Engine?</h2>
+
+<p>도커 엔진은 컨테이너를 생성하고 관리하는 주체로서 도커엔진 자체로도 컨테이너를 제어할 수 있고 다양한 기능을 제공하는 도커의 주 프로젝트이다.</p>
+
+<p>도커 생태계의 여러 프로젝트는 도커 엔진을  좀 더 효율적으로 사용하기 위한 것!</p>
+
+<p>핵심은 도커 엔진이기 때문에 다른 프로젝트들을 능숙하게 다루기 위해서는 도커엔진을 우선적으로 잘 알아야한다.</p>
+
+<h2 id="가상-머신과-도커-컨테이너">가상 머신과 도커 컨테이너</h2>
+
+<p>기존의 가상화 기술은 <strong>하이퍼바이저</strong>를 이용해 여러 개의 운영체제를 <strong>하나의 호스트에서 생성</strong>해 사용하는 방식이였다. 이러한 여러개의 OS는 가상 머신이라는 단위로 구별된다.</p>
+
+<p>하이퍼바이저에 의해 생성되고 관리되는 OS는 Guest OS라고 하며, 각 Guest OS는 다른 Guest OS와는 완전히 독립된 공간과 시스템 자원을 할당받아 사용한다.</p>
+
+<p>이러한 방법은 대표적으로 VirtualBox, VMWare가 있다.</p>
+
+<p><img src="Docker%203206c9e7209f42c89236b975b465c77b/Untitled.png" alt="가상 머신의 구조 [https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)" /></p>
+
+<p>가상 머신의 구조 <a href="https://www.docker.com/resources/what-container">https://www.docker.com/resources/what-container</a></p>
+
+<p>각종 시스템 자원을 가상화하고 독립된 공간을 생성하는 작업은 하이퍼바이저를 반드시 거치기 때문에 일반 호스트에 비해 성능 손실이 발생한다.. + 가상 머신은 Guest OS를 사용하기 위한 라이브러리, 커널 등을 전부 포함하기 때문에 배포하기 위해 이미지를 만들면 크기가 매우 커진다.</p>
+
+<blockquote>
+  <p>⇒ 완벽한 OS를 생성할 수 있는 장점, but 일반 호스트에 비해 성능 손실과 배포를 위한 크기가 부담스러움.</p>
+
+</blockquote>
+
+<p><img src="Docker%203206c9e7209f42c89236b975b465c77b/Untitled%201.png" alt="도커 컨테이너의 구조 [https://www.docker.com/resources/what-container](https://www.docker.com/resources/what-container)" /></p>
+
+<p>도커 컨테이너의 구조 <a href="https://www.docker.com/resources/what-container">https://www.docker.com/resources/what-container</a></p>
+
+<p>반면, 도커 컨테이너는 가상화된 공간을 생성하기 위해 리눅스의 자체 기능인 chroot, namespace, cgroup을 사용함으로써 프로세스 단위의 격리 환경을 만들기 때문에 성능 손실이 거의 없다.</p>
+
+<p>컨테이너에 필요한 커널은 호스트의 커널을 공유해 사용하고, 컨테이너 안의 어플리케이션을 구동하는데 필요한 라이브러리 및 실행파일에만 존재하기 때문에 컨테이너를 이미지로 만들었을 때 이미지의 용량 또한 가상 머신에 비해 대폭 줄어든다.</p>
+
+<blockquote>
+  <p>⇒ 컨테이너를 이미지로 만들어 배포하는 시간이 가상 머신에 비해 빠르고, 성능 손실도 없다는 장점.</p>
+
+</blockquote>
+
+<h2 id="docker를-사용해야하는-이유">Docker를 사용해야하는 이유?</h2>
+
+<p>컨테이너는 OpenVZ, LXC, cri-o 등 몇가지가 존재하지만 도커가 컨테이너 생태계에서 표준으로 사용되고 있다.</p>
+
+<p>따라서 쿠버네티스, 메소스와 같은 오픈소스 프로젝트에서도 도커를 기준으로 개발되고 있고, 많은 회사들이 서비스 개발 및 운영환경에서 도커 컨테이너를 도입하고 있다. 그렇다면 왜 그렇게 많은 회사에서 도커를 선택했을까?</p>
+
+<h3 id="1-어플리케이션의-개발과-배포가-편리해짐">1. 어플리케이션의 개발과 배포가 편리해짐</h3>
+
+<p>서버를 부팅할 때 실행되는 OS를 일반적으로 Host OS라고 한다. 도커 컨테이너는 호스트 OS 위에서 실행되는 격리된 공간이기 때문에 컨테이너 자체에 특별한 권한을 주지 않으면 컨테이너 내부에서 어떤 S/W를 설치하고 실행해도 Host OS에는 영향을 끼치지 않는다. ( 독립된 개발 환경을 보장 )</p>
+
+<p>컨테이너 내부에서 여러 작업을 마치고 이를 운영 환경에 배포하려고 하면, 해당 컨테이너를 Docker Image라고 하는 일종의 패키지로 만들어 운영 서버에 전달하기만 하면 된다.</p>
+
+<p>컨테이너에서 사용되던 운영서버에서 새롭게 패키지를 설치할 필요도 없으며, 각종 라이브러리 설치 등으로 인한 의존성을 걱정할 필요도 없다. 서비스를 개발했을때 사용했던 환경을 다른 서버에서도 컨테이너로서 똑같이 복제할 수 있기 때문에 개발/운영 환경의 통합이 가능해진다.</p>
+
+<p>도커 이미지는 가상 머신의 이미지와 다르게 커널을 포함하지 않으므로 이미지 크기가 크지 않다. 그리고 도커 이미지 내용을 레이어 단위로 구성하기 때문에 중복 되는 레이어를 재사용할 수 있어 앱의 배포 속도가 매우 빠르다는 장점이 있다.</p>
+
+<h3 id="2-독립성과-확장성">2. 독립성과 확장성</h3>
+
+<p>S/W의 여러 모듈이 상호작용하는 로직을 하나의 프로그램 내에서 구동시키는 방식을 Monolith 어플리케이션이라고 한다. 소규모 서비스에서는 괜찮지만 서비스의 기능이 복잡해지고 거대해질수록 S/W 자체의 확장성과 유연성이 줄어들게 된다.</p>
+
+<p>이런 Monolith를 대체하기 위해 새롭게 Microservices 구조가 등장하였다.</p>
+
+<p>마이크로서비스 구조는 여러 모듈을 독립된 형태로 구성하기 때문에 언어에 종속되지 않고 변화에 빠르게 대응 할 수 있으며, 각 모듈의 관리가 쉬어진다는 장점이 있다.</p>
+
+<p>컨테이너는 수 초 내로 생성, 시작이 가능할 뿐만 아니라 여러 모듈에게 독립된 환경을 동시에 제공할 수 있기 때문에 마이크로서비스에서 가장 많이 사용되고 있는 가상화 기술이다.</p>
+
+<p>예시로 웹 서비스는 DB 컨테이너와 웹 서버 컨테이너로 분리 할 수 있고, 웹 서비스에 부하가 발생할 시 마이크로서비스 구조의 웹 서버 컨테이너만 동적으로 늘려서 부하를 분산할 수 있다. 또한 웹 서버와 DB의 이미지 버전을 독립적으로 관리하기 때문에 유지 보수도 용이해진다.</p>
+
+<p>이와 같은 컨테이너 기반의 마이크로서비스는 개발자가 그 구조를 직접 구현하기보다는 도커 스웜모드, 쿠버네티스 등의 컨테이너 오케스트레이션 플랫폼을 통해 사용하는 것이 일반적이다.</p>
+
+<p>본 포스트는 용찬호님의 Getting Started with Docker/Kubernetes를 참고하여 작성하였습니다.</p>
+
+  </div>
+
+  <footer class="post-footer">
+    
+      <div class="post-meta">
+        <i class="fas fa-folder"></i>
+        <ul class="post-taxonomies post-categories">
+          
+          
+            <li class="post-category">
+              
+              <a href="/categories/#docker">Docker</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    
+      <div class="post-meta">
+        <i class="fas fa-tags"></i>
+        <ul class="post-taxonomies post-tags">
+          
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#docker">docker</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#os">os</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    <nav class="post-pagination" role="navigation">
+      
+        <a class="post-previous" href="/bioinformatics/2021/01/27/Rna-seq.html">
+          <h4 class="post-pagination-label">Prev</h4>
+          <span class="post-pagination-title">
+            <i class="fas fa-arrow-left"></i> RNA-seq
+
+          </span>
+        </a>
+      
+
+      
+        <a class="post-next" href="/docker/2022/01/09/Docker-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-%EC%83%9D%EC%84%B1.html">
+          <h4 class="post-pagination-label">Next</h4>
+          <span class="post-pagination-title">
+            Docker 이미지와 컨테이너 커맨드
+ <i class="fas fa-arrow-right"></i>
+          </span>
+        </a>
+      
+    </nav>
+  </footer>
+
+  
+  
+</article>
+
+          <footer class="site-footer">
+            <div class="footer-col-wrapper">
+
+  <div class="footer-col">
+    <div class="copyright">
+      
+      
+      
+      
+      <p>Copyright © 2021&nbsp;-&nbsp;2022 Jongheon Lee; All rights reserved.</p>
+      
+    </div>
+  </div>
+
+  <!-- <div class="footer-col">
+    <p>always be hustle</p>
+  </div> -->
+</div>
+
+          </footer>
+        </main>
+      </div>
+    </div>
+  </body>
+
+</html>
